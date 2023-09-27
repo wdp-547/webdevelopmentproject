@@ -1,0 +1,2 @@
+mailchimp APIKEY: 79c6287e4f254b4f4238624b70167987-us21
+unique audience ID: 3d652d1b59
