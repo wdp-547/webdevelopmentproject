@@ -78,7 +78,7 @@ app.post("/", (req,res)=>{
     })
 
 app.listen(process.env.PORT || 3000,()=>{
-    console.log("Server is listening at port 3000")
+    console.log("Server is listening at PORT")
 });
 
 //apiKey = 79c6287e4f254b4f4238624b70167987-us21
