@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.get("/", (req,res)=>{
 
     //get path
-    res.sendFile(__dirname + "/signup.html")
+    res.sendFile(__dirname + "/index.html")
 
 });
     
@@ -45,34 +45,33 @@ app.post("/", (req,res)=>{
 
 //request mailchimp to post data to its server
 
-    const url = "https://us21.api.mailchimp.com/3.0/lists/3d652d1b59";
+    const url = "https://us21.api.mailchimp.com/3.0/lists/9665b1d1a3";
 
 // declaring an object to store methods
     const options = {
         method : "POST",
-        auth   : "rajengrad:79c6287e4f254b4f4238624b70167987-us21",
+        auth   : "rajengrad:695b25b2738e26fe973768736490c084-us21",
     }
 
 //request made to mailchimp server to store
     const request = https.request(url, options, (response)=>{
 
-        if(response.statuscode === 200){
-            res.sendFile(__dirname + "/success.html")
+        if(response.statusCode === 200){
+                res.sendFile(__dirname + "/success.html")
             }else
-            {res.sendFile(__dirname+ "/failure.html")}
+            {
+                res.sendFile(__dirname+ "/failure.html")
+            }
 
             response.on("data",(data)=>{
             console.log(JSON.parse(data));
                         
-        })
-    
-    }) 
+            })           
+        }) 
 
-    request.write(jsonData);
-    request.end();
-    
-
-});
+        request.write(jsonData);
+        request.end();
+    });
         app.post("/failure",(req,res)=>{
         res.redirect("/")
     })
@@ -81,5 +80,5 @@ app.listen(process.env.PORT || 3000,()=>{
     console.log("Server is listening at PORT")
 });
 
-//apiKey = 79c6287e4f254b4f4238624b70167987-us21
-// unique audience ID: 3d652d1b59
+//apiKey = 695b25b2738e26fe973768736490c084-us21
+// unique audience ID: 9665b1d1a3
